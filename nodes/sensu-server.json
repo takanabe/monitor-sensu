@@ -1,5 +1,7 @@
 {
   "run_list":[
-    "recipe[sensu-wrapper]"
+    "recipe[apt]",
+    "recipe[sensu-wrapper]",
+    "recipe[uchiwa]"
   ]
 }

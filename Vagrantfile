@@ -11,7 +11,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
     # Please change any boxes you want to use
     server.vm.box = "ubuntu14_04"
-    server.vm.network "private_network", ip: "192.168.33.10", virtualbox__intnet: "monitoring_network"
+    server.vm.network "private_network", ip: "192.168.33.10"
   end
 
   # config.vm.define "sensu-client" do |client|
