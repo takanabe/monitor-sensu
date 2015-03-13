@@ -1,7 +1,5 @@
 {
   "run_list":[
-    "recipe[apt]",
-    "recipe[sensu-wrapper]",
-    "recipe[uchiwa]"
+    "role[sensu-server]"
   ]
 }
