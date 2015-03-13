@@ -5,3 +5,8 @@ This repository is to build the monitoring system with Sensu.
 
 # About Vagrantfile
 Vagrantfile exists to develop and test this reposository in local
+
+```
+$vagrant up
+$vagrant ssh-config --host=sensu-server >> ~/.ssh/config
+```
