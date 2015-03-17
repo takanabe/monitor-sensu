@@ -1,0 +1,12 @@
+{
+  "name": "sensu-server",
+  "json_class": "Chef::Role",
+  "description": "sensu-server",
+  "chef_type": "role",
+  "run_list": [
+    "recipe[apt]",
+    "recipe[sensu-wrapper]",
+    "recipe[uchiwa]"
+    ]
+}
+

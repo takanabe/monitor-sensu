@@ -1,7 +1,8 @@
 {
   "run_list":[
-    "recipe[apt]",
-    "recipe[sensu-wrapper]",
-    "recipe[uchiwa]"
-  ]
+    "role[sensu-server]"
+  ],
+  "monitored-point": {
+    "ipaddress": "192.168.33.10"
+  }
 }
