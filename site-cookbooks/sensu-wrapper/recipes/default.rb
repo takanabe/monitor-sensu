@@ -24,8 +24,16 @@ sensu_client node.name do
   subscriptions node.roles + ["all"]
 end
 
+# For check-log.rb plugin
+directory "/var/cache" do
+  owner "sensu"
+  group "sensu"
+  mode  0755
+end
+
 %w[
   check-cpu.rb
+  check-log.rb
 ].each do |default_plugin|
   cookbook_file "/etc/sensu/plugins/#{default_plugin}" do
     source "plugins/#{default_plugin}"

@@ -1,0 +1,12 @@
+{
+  "checks": {
+    "check_log": {
+      "handlers": [
+        "default"
+      ],
+      "command": "/etc/sensu/plugins/check-log.rb -f /var/log/syslog -r -q WARN",
+      "interval": 30,
+      "subscribers": ["all"]
+    }
+  }
+}
