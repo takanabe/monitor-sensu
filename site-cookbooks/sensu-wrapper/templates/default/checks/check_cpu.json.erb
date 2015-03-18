@@ -1,0 +1,13 @@
+{
+  "checks": {
+    "check_cpu": {
+      "handlers": [
+        "default"
+      ],
+      "command": "/etc/sensu/plugins/check-cpu.rb -w 10 -c 100",
+      "interval": 60,
+      "occurrences": 5,
+      "subscribers": ["all"]
+    }
+  }
+}
