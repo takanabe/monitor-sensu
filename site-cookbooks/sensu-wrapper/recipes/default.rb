@@ -9,12 +9,7 @@
 include_recipe "sensu::default"
 
 # puts node.to_hash.roles[0]
-print "beforeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee\n"
-print  node.name
-print  node['name'] == "sensu-server"
-
 if node.name == "sensu-server" then
-  print "insideeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
   include_recipe "sensu::redis"
   include_recipe "sensu::rabbitmq"
 
@@ -29,9 +24,28 @@ sensu_client node.name do
   subscriptions node.roles + ["all"]
 end
 
+# For check-log.rb plugin
+directory "/var/cache" do
+  owner "sensu"
+  group "sensu"
+  mode  0755
+end
+
+%w[
+  check-cpu.rb
+  check-log.rb
+].each do |default_plugin|
+  cookbook_file "/etc/sensu/plugins/#{default_plugin}" do
+    source "plugins/#{default_plugin}"
+    mode 0755
+  end
+end
+
 if node.name == "sensu-server" then
   include_recipe "sensu::api_service"
+  include_recipe "sensu-wrapper::checks"
   include_recipe "sensu::server_service"
 end
 
+node.set.sensu.use_embedded_ruby = true
 include_recipe "sensu::client_service"
