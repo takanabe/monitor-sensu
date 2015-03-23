@@ -1,0 +1,8 @@
+{
+  "run_list":[
+    "role[sensu-client]"
+  ],
+  "monitored-point": {
+    "ipaddress": "192.168.33.12"
+  }
+}

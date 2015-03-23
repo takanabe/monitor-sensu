@@ -1,7 +1,7 @@
 # Monitor Sensu
 This repository is to build the monitoring system with Sensu.
 
-# Required Environment
+# Requirement
 * Vagrant box file(Ubuntu14.04)
 * Chef-client 11.14 or later
 * knife solo
@@ -11,16 +11,23 @@ Vagrantfile exists to develop and test this reposository in local environment. S
 
 # Installation
 ```
-$git clone https://github.com/takanabe/monitor-sensu.git
-$cd ./examples/ssl
-$ ./ssl_certs.sh generate
-$mkdir ../../data_bags/sensu
-$cp ssl.json ../../data_bags/sensu
-$vagrant up
-$vagrant ssh-config --host=sensu-server >> ~/.ssh/config
-$vagrant ssh-config --host=sensu-client >> ~/.ssh/config
-$knife solo bootstrap vagrant@sensu-server --bootstrap-version 11.16.4
-$knife solo bootstrap vagrant@sensu-client --bootstrap-version 11.16.4
+git clone https://github.com/takanabe/monitor-sensu.git
+berks vendor cookbooks
+cd ./examples/ssl
+ ./ssl_certs.sh generate
+mkdir ../../data_bags/sensu
+cp ssl.json ../../data_bags/sensu
+vagrant up
+vagrant ssh-config --host=sensu-server >> ~/.ssh/config
+vagrant ssh-config --host=sensu-client1 >> ~/.ssh/config
+knife solo bootstrap vagrant@sensu-server --bootstrap-version 11.16.4
+knife solo bootstrap vagrant@sensu-client1 --bootstrap-version 11.16.4
+
+```
+if you add more clients, please do same as above.
+```
+vagrant ssh-config --host=sensu-client2 >> ~/.ssh/config
+knife solo bootstrap vagrant@sensu-client2 --bootstrap-version 11.16.4
 ```
 # Edit check script
 To monitor your log file, edit command field included in `site-cookbooks/sensu-wrapper/templates/default/checks/check_log.json.erb`
