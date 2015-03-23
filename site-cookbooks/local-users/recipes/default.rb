@@ -1,13 +1,14 @@
 #
-# Cookbook Name:: users
+# Cookbook Name:: local-users
 # Recipe:: default
 #
 # Copyright 2015, YOUR_COMPANY_NAME
 #
 # All rights reserved - Do Not Redistribute
 #
-
+#
 data_ids = data_bag('users')
+
 data_ids.each do |id|
   u = data_bag_item('users', id)
 
@@ -54,4 +55,6 @@ data_ids.each do |id|
   end
 
 end
+
+
 
