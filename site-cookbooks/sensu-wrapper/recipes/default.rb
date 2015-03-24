@@ -34,6 +34,7 @@ end
 %w[
   check-cpu.rb
   check-log.rb
+  check-memory-pcnt.sh
 ].each do |default_plugin|
   cookbook_file "/etc/sensu/plugins/#{default_plugin}" do
     source "plugins/#{default_plugin}"

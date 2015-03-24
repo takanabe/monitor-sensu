@@ -1,10 +1,10 @@
 {
   "checks": {
-    "check_cpu": {
+    "check-memory-pcnt": {
       "handlers": [
         "default"
       ],
-      "command": "/etc/sensu/plugins/check-cpu.rb -w 90 -c 100",
+      "command": "/etc/sensu/plugins/check-memory-pcnt.sh -w 90 -c 100",
       "interval": 60,
       "occurrences": 5,
       "subscribers": ["all"]

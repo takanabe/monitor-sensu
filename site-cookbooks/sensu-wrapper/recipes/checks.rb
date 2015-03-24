@@ -10,23 +10,23 @@ template "check_cpu.json" do
     path "/etc/sensu/conf.d/check_cpu.json"
     owner "root"
     group "root"
-    mode "0644"
+    mode  "0644"
     source "checks/check_cpu.json.erb"
 end
 
-# template "check_memory_pcnt.json" do
-#     path "/etc/sensu/conf.d/check_memory_pcnt.json"
-#     owner "root"
-#     group "root"
-#     mode "0644"
-#     source "check_memory_pcnt.json.erb"
-# end
+template "check-memory-pcnt.json" do
+    path "/etc/sensu/conf.d/check-memory-pcnt.json"
+    owner "root"
+    group "root"
+    mode  "0644"
+    source "checks/check-memory-pcnt.json.erb"
+end
 #
 template "check_log.json" do
     path "/etc/sensu/conf.d/check_log.json"
     owner "root"
     group "root"
-    mode "0644"
+    mode  "0644"
     source "checks/check_log.json.erb"
 end
 #
