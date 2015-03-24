@@ -29,11 +29,11 @@ template "check_log.json" do
     mode  "0644"
     source "checks/check_log.json.erb"
 end
-#
-# template "checks_proc.json" do
-#     path "/etc/sensu/conf.d/checks_proc.json"
-#     owner "root"
-#     group "root"
-#     mode "0644"
-#     source "checks_proc.json.erb"
-# end
+
+template "check-procs.json" do
+    path "/etc/sensu/conf.d/check-procs.json"
+    owner "root"
+    group "root"
+    mode "0644"
+    source "checks/check-procs.json.erb"
+end

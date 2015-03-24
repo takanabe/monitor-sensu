@@ -1,0 +1,13 @@
+{
+  "checks": {
+    "check-procs": {
+      "handlers": [
+        "default"
+      ],
+      "command": "/etc/sensu/plugins/check-procs.rb -p uchiwa -C 1",
+      "interval": 60,
+      "occurrences": 5,
+      "subscribers": ["sensu-server"]
+    }
+  }
+}
