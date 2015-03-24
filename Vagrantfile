@@ -69,35 +69,35 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   end
 
-  config.vm.define "sensu-client2" do |client2|
-    client2.vm.provider "virtualbox" do |v|
-      v.name = "sensu-client2"
-    end
-    # Please change any boxes you want to use
-    client2.vm.box = "ubuntu14_04"
-    client2.vm.network "private_network", ip: "192.168.33.12"
-    client2.vm.hostname = "sensu-client2"
-
-    # Auto provisioning setting
-    # client2.vm.provision :shell, path: "bootstrap.sh"
-
-    client2.vm.provision "chef_solo" do |chef|
-      chef.cookbooks_path = ["./site-cookbooks","./cookbooks"]
-      chef.data_bags_path = "./data_bags"
-      chef.add_recipe "local-users"
-      chef.add_recipe "openssh"
-      chef.add_recipe "local-sudo"
-
-      # Set attribute to overide sshd_config
-      chef.json = {
-        "openssh" => {
-          "server" => {
-            "permit_empty_passwords" => "yes",
-            "use_p_a_m" => "no"
-          }
-        }
-      }
-    end
-  end
+  # config.vm.define "sensu-client2" do |client2|
+  #   client2.vm.provider "virtualbox" do |v|
+  #     v.name = "sensu-client2"
+  #   end
+  #   # Please change any boxes you want to use
+  #   client2.vm.box = "ubuntu14_04"
+  #   client2.vm.network "private_network", ip: "192.168.33.12"
+  #   client2.vm.hostname = "sensu-client2"
+  #
+  #   # Auto provisioning setting
+  #   # client2.vm.provision :shell, path: "bootstrap.sh"
+  #
+  #   client2.vm.provision "chef_solo" do |chef|
+  #     chef.cookbooks_path = ["./site-cookbooks","./cookbooks"]
+  #     chef.data_bags_path = "./data_bags"
+  #     chef.add_recipe "local-users"
+  #     chef.add_recipe "openssh"
+  #     chef.add_recipe "local-sudo"
+  #
+  #     # Set attribute to overide sshd_config
+  #     chef.json = {
+  #       "openssh" => {
+  #         "server" => {
+  #           "permit_empty_passwords" => "yes",
+  #           "use_p_a_m" => "no"
+  #         }
+  #       }
+  #     }
+  #   end
+  # end
 
 end

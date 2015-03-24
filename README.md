@@ -20,14 +20,14 @@ cp ssl.json ../../data_bags/sensu
 vagrant up
 vagrant ssh-config --host=sensu-server >> ~/.ssh/config
 vagrant ssh-config --host=sensu-client1 >> ~/.ssh/config
-knife solo bootstrap vagrant@sensu-server --bootstrap-version 11.16.4
-knife solo bootstrap vagrant@sensu-client1 --bootstrap-version 11.16.4
+knife solo bootstrap ec2-user@sensu-server --bootstrap-version 11.16.4
+knife solo bootstrap ec2-user@sensu-client1 --bootstrap-version 11.16.4
 
 ```
 if you add more clients, please do same as above.
 ```
 vagrant ssh-config --host=sensu-client2 >> ~/.ssh/config
-knife solo bootstrap vagrant@sensu-client2 --bootstrap-version 11.16.4
+knife solo bootstrap ec2-user@sensu-client2 --bootstrap-version 11.16.4
 ```
 # Edit check script
 To monitor your log file, edit command field included in `site-cookbooks/sensu-wrapper/templates/default/checks/check_log.json.erb`
